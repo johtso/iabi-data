@@ -1,0 +1,31 @@
+name: Build and GH-Page Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install sqlite
+        run: sudo apt-get install sqlite3
+
+      - name: build db
+        run: bash scripts/build_db.sh
+      
+      - name: chunk db
+        run: |
+          mkdir db
+          bash scripts/chunk_db.sh temp.sqlite db
+
+      - name: Deploy to GH Page
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
+        with:
+          branch: gh-pages
+          folder: db
