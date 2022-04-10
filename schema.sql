@@ -8,8 +8,8 @@ CREATE TABLE images(
   height INTEGER NOT NULL,
   faves INTEGER NOT NULL,
   comments INTEGER NOT NULL,
-  views INTEGER NOT NULL
-  -- bookid INTEGER NOT NULL
+  views INTEGER NOT NULL,
+  bookid INTEGER NOT NULL
 );
 
 .separator ' '
