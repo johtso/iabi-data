@@ -26,6 +26,9 @@ jobs:
           mkdir db
           bash scripts/chunk_db.sh temp.sqlite db
 
+      - name: No Jeckyll
+        run: touch dist/.nojekyll
+
       - name: Deploy to GH Page
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
